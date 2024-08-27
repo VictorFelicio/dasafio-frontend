@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    width: 100%;
+    background-color: red;
+    justify-content: space-between;
+
+    > nav {
+        display: flex;
+        justify-content: space-between;
+        width: 110vw;
+    }
+}
