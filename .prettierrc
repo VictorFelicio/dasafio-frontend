@@ -7,7 +7,7 @@
     "jsxSingleQuote": false,
     "quoteProps": "as-needed",
     "trailingComma": "es5",
-    "singleAttributePerLine": false,
+    "singleAttributePerLine": true,
     "proseWrap": "never",
     "insertPragma": false,
     "printWidth": 80,
