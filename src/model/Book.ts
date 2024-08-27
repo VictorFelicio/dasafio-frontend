@@ -4,5 +4,5 @@ export interface Book {
     id: string;
     name: string;
     author_id: Author['id'];
-    pages?: number;
+    pages?: string;
 }
