@@ -1,7 +1,8 @@
 export function App() {
+    const teste = 'Ola';
     return (
         <>
-            <div>Inicio</div>
+            <div>{teste}</div>
         </>
     );
 }
