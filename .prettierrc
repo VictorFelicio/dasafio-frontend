@@ -10,7 +10,7 @@
     "singleAttributePerLine": false,
     "proseWrap": "never",
     "insertPragma": false,
-    "printWidth": 100,
+    "printWidth": 80,
     "requirePragma": false,
     "tabWidth": 4,
     "useTabs": false,
