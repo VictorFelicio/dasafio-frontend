@@ -1,38 +1,72 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthorForms } from '../AuthorForms/AuthorForms';
 import { BookForms } from '../BookForms/BookForms';
 import './ModalWithTabs.scss';
+import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 
-interface ModalWithTabsProps {
-    isOpen: boolean;
-    closeModal: () => void;
-}
+export function ModalWithTabs() {
+    const [modalType, setModalType] = useState<'author' | 'book' | undefined>('author');
+    const { isOpenModal, handleCloseModal, updateEvent } = useContext(ModalContext);
 
-export function ModalWithTabs({ isOpen, closeModal }: ModalWithTabsProps) {
-    const [modalType, setModalType] = useState<'author' | 'book'>('author');
+    useEffect(() => {
+        if (updateEvent.isUpdateEvent) {
+            setModalType(updateEvent.type);
+        }
+    }, [updateEvent]);
 
-    if (!isOpen) {
+    if (!isOpenModal) {
         return null;
     }
 
     return (
         <div className="modal-overlay">
-            <main className="content">
-                <button onClick={() => closeModal()}>X</button>
+            <main className="modal-content">
+                <button
+                    className="modal-close-button"
+                    onClick={handleCloseModal}
+                >
+                    X
+                </button>
                 <div>
                     <header>
-                        <nav>
-                            <button onClick={() => setModalType('author')}>
-                                Autor
-                            </button>
-                            <button onClick={() => setModalType('book')}>
-                                Livro
-                            </button>
+                        <nav className="modal-tabs">
+                            {updateEvent.isUpdateEvent ? (
+                                updateEvent.type == 'author' ? (
+                                    <button
+                                        onClick={() => setModalType('author')}
+                                        className={`modal-tab-button ${modalType === 'author' ? 'active' : ''}`}
+                                    >
+                                        Autor
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => setModalType('book')}
+                                        className={`modal-tab-button ${modalType === 'book' ? 'active' : ''}`}
+                                    >
+                                        Livro
+                                    </button>
+                                )
+                            ) : (
+                                <>
+                                    <button
+                                        onClick={() => setModalType('author')}
+                                        className={`modal-tab-button ${modalType === 'author' ? 'active' : ''}`}
+                                    >
+                                        Autor
+                                    </button>
+                                    <button
+                                        onClick={() => setModalType('book')}
+                                        className={`modal-tab-button ${modalType === 'book' ? 'active' : ''}`}
+                                    >
+                                        Livro
+                                    </button>
+                                </>
+                            )}
                         </nav>
                     </header>
                 </div>
-                <div>
-                    {modalType == 'author' ? <AuthorForms /> : <BookForms />}
+                <div className="modal-tab-content">
+                    {modalType === 'author' ? <AuthorForms /> : <BookForms />}
                 </div>
             </main>
         </div>
