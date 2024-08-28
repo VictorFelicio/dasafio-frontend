@@ -1,24 +1,40 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 import { genereteID } from '../../utils/generateID';
 import { Book } from '../../model/Book';
+import './BookForms.scss';
+import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 export function BookForms() {
     const { handleSubmit, register, reset } = useForm<Book>({});
-    const { authors, addBook } = useContext(LibraryContext);
+    const { authors, addBook, updateBook } = useContext(LibraryContext);
+    const { handleCloseModal, updateEvent, selectedBook } = useContext(ModalContext);
+
+    useEffect(() => {
+        if (selectedBook && updateEvent.isUpdateEvent) {
+            reset(selectedBook);
+        }
+    }, [reset, selectedBook, updateEvent]);
+
+    const onSubmitBook = (data: Book) => {
+        if (updateEvent.isUpdateEvent && selectedBook) {
+            updateBook(data);
+        } else {
+            const newBook: Book = {
+                id: genereteID(),
+                name: data.name,
+                author_id: data.author_id,
+                pages: data.pages ? data.pages : 'N/I',
+            };
+            addBook(newBook);
+            reset();
+        }
+        handleCloseModal();
+    };
     return (
         <form
-            onSubmit={handleSubmit((data) => {
-                const newBook: Book = {
-                    id: genereteID(),
-                    name: data.name,
-                    author_id: data.author_id,
-                    pages: data.pages ? data.pages : 'N/I',
-                };
-                addBook(newBook);
-                reset();
-                console.log(data);
-            })}
+            className="book-forms"
+            onSubmit={handleSubmit(onSubmitBook)}
         >
             <div>
                 <label htmlFor="name">Titulo</label>
@@ -55,7 +71,7 @@ export function BookForms() {
                 />
             </div>
             <div>
-                <button>Criar</button>
+                <button>{updateEvent.isUpdateEvent ? 'Atualizar' : 'Criar'}</button>
             </div>
         </form>
     );

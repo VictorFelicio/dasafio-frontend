@@ -4,9 +4,7 @@ import { Author } from '../../model/Author';
 import { localStorageKey } from '../../enum/localStorageKey';
 import { LibraryContextProps } from '../interface/LibraryContextProps';
 
-const LibraryContext = createContext<LibraryContextProps>(
-    {} as LibraryContextProps
-);
+const LibraryContext = createContext<LibraryContextProps>({} as LibraryContextProps);
 
 function LibraryProvider({ children }: { children: React.ReactNode }) {
     const [authors, setAuthors] = useState<Author[]>([]);
@@ -36,24 +34,18 @@ function LibraryProvider({ children }: { children: React.ReactNode }) {
         setAuthors((prevAuthors) => [...prevAuthors, author]);
     }
 
-    function updateAuthor(updatedAuthor: Author) {
+    function updateAuthor(authorToUpdated: Author) {
         setAuthors((prevAuthors) =>
             prevAuthors.map((author) =>
-                author.id === updatedAuthor.id
-                    ? { ...author, ...updatedAuthor }
-                    : author
+                author.id === authorToUpdated.id ? { ...author, ...authorToUpdated } : author
             )
         );
     }
 
     function removeAuthor(id: string) {
-        setAuthors((prevAuthors) =>
-            prevAuthors.filter((author) => author.id != id)
-        );
+        setAuthors((prevAuthors) => prevAuthors.filter((author) => author.id != id));
 
-        setBooks((prevBooks) =>
-            prevBooks.filter((book) => book.author_id != id)
-        );
+        setBooks((prevBooks) => prevBooks.filter((book) => book.author_id != id));
     }
 
     function addBook(book: Book) {
