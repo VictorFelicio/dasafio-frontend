@@ -1,18 +1,11 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { ModalWithTabs } from '../ModalWithTabs/ModalWithTabs';
 import './Header.scss';
+import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 
 export function Header() {
-    const [isOpen, setIsOpenModal] = useState(false);
-
-    const handleOpenModal = () => {
-        setIsOpenModal(true);
-    };
-
-    const handleCloseModal = () => {
-        console.log(isOpen);
-        setIsOpenModal(false);
-    };
+    const { isOpenModal, handleCloseModal, handleOpenModal } =
+        useContext(ModalContext);
 
     return (
         <header className="header">
@@ -25,8 +18,8 @@ export function Header() {
                 </div>
             </nav>
             <ModalWithTabs
-                isOpen={isOpen}
-                closeModal={handleCloseModal}
+                isOpen={isOpenModal}
+                handleCloseModal={handleCloseModal}
             />
         </header>
     );
