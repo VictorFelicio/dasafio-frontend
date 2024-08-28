@@ -1,4 +1,4 @@
 import './Footer.scss';
 export function Footer() {
-    return <footer>Rodapé</footer>;
+    return <footer>Feito com 💖 por João Victor Felicio</footer>;
 }
