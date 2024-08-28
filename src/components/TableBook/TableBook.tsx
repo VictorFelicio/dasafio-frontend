@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+import { LibraryContext } from '../../contexts/LibraryContext';
+
 export function TableBook() {
+    const { books } = useContext(LibraryContext);
     return (
         <>
             <thead>
@@ -10,18 +14,16 @@ export function TableBook() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>O Morro dos Ventos Uivantes</td>
-                    <td>Emily Brontë</td>
-                    <td>416</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Dom Quixote</td>
-                    <td>Miguel de Cervantes</td>
-                    <td>1072</td>
-                </tr>
+                {books.map((book) => {
+                    return (
+                        <tr key={book.id}>
+                            <td>{book.id}</td>
+                            <td>{book.name}</td>
+                            <td>{book.author_id}</td>
+                            <td>{book.pages}</td>
+                        </tr>
+                    );
+                })}
             </tbody>
         </>
     );

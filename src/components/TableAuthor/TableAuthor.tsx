@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+import { LibraryContext } from '../../contexts/LibraryContext';
+
 export function TableAuthor() {
+    const { authors } = useContext(LibraryContext);
     return (
         <>
             <thead>
@@ -9,16 +13,15 @@ export function TableAuthor() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>João</td>
-                    <td>João@teste.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>francisco</td>
-                    <td>francisco@teste.com</td>
-                </tr>
+                {authors.map((author) => {
+                    return (
+                        <tr key={author.id}>
+                            <td>{author.id}</td>
+                            <td>{author.name}</td>
+                            <td>{author.email}</td>
+                        </tr>
+                    );
+                })}
             </tbody>
         </>
     );
