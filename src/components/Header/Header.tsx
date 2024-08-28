@@ -6,8 +6,6 @@ export function Header() {
     const [isOpen, setIsOpenModal] = useState(false);
 
     const handleOpenModal = () => {
-        console.log(isOpen);
-
         setIsOpenModal(true);
     };
 
@@ -26,7 +24,10 @@ export function Header() {
                     <button onClick={() => handleOpenModal()}>Adicionar</button>
                 </div>
             </nav>
-            <ModalWithTabs isOpen={isOpen} closeModal={handleCloseModal} />
+            <ModalWithTabs
+                isOpen={isOpen}
+                closeModal={handleCloseModal}
+            />
         </header>
     );
 }

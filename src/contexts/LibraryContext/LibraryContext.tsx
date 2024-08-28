@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Book } from '../model/Book';
-import { Author } from '../model/Author';
-import { localStorageKey } from '../enum/localStorageKey';
-import { LibraryContextProps } from './interface/LibraryContextProps';
+import { Book } from '../../model/Book';
+import { Author } from '../../model/Author';
+import { localStorageKey } from '../../enum/localStorageKey';
+import { LibraryContextProps } from '../interface/LibraryContextProps';
 
 const LibraryContext = createContext<LibraryContextProps>(
     {} as LibraryContextProps

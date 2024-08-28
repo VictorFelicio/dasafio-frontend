@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { LibraryContext } from '../../contexts/LibraryContext';
+import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 import { Author } from '../../model/Author';
 import { genereteID } from '../../utils/generateID';
 
 export function AuthorForms() {
-    const { handleSubmit, register } = useForm<Author>();
+    const { handleSubmit, register, reset } = useForm<Author>();
     const { addAuthor } = useContext(LibraryContext);
     return (
         <form
@@ -16,6 +16,7 @@ export function AuthorForms() {
                     email: data.email ? data.email : 'N/I',
                 };
                 addAuthor(newAuthor);
+                reset();
                 console.log(newAuthor);
             })}
         >

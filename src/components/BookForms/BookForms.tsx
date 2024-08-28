@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { LibraryContext } from '../../contexts/LibraryContext';
+import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 import { genereteID } from '../../utils/generateID';
 import { Book } from '../../model/Book';
 export function BookForms() {
-    const { handleSubmit, register } = useForm<Book>({});
+    const { handleSubmit, register, reset } = useForm<Book>({});
     const { authors, addBook } = useContext(LibraryContext);
     return (
         <form
@@ -16,6 +16,7 @@ export function BookForms() {
                     pages: data.pages ? data.pages : 'N/I',
                 };
                 addBook(newBook);
+                reset();
                 console.log(data);
             })}
         >

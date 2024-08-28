@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LibraryContext } from '../../contexts/LibraryContext';
+import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 
 export function TableAuthor() {
     const { authors } = useContext(LibraryContext);
@@ -19,6 +19,12 @@ export function TableAuthor() {
                             <td>{author.id}</td>
                             <td>{author.name}</td>
                             <td>{author.email}</td>
+                            <td>
+                                <button>editar</button>
+                            </td>
+                            <td>
+                                <button>excluir</button>
+                            </td>
                         </tr>
                     );
                 })}

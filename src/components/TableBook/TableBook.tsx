@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { LibraryContext } from '../../contexts/LibraryContext';
-
+import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 export function TableBook() {
     const { books } = useContext(LibraryContext);
     return (
