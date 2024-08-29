@@ -22,13 +22,13 @@ export function ConfirmModal({ isOpen, onConfirm, onCancel }: ConfirmModalProps)
                         className="confirm-dialog-cancel"
                         onClick={onCancel}
                     >
-                        Cancelar
+                        CANCELAR
                     </button>
                     <button
                         onClick={onConfirm}
                         className="confirm-dialog-confirm"
                     >
-                        Confirmar
+                        CONFIRMAR
                     </button>
                 </div>
             </div>
