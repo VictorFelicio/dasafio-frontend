@@ -12,4 +12,5 @@ export interface LibraryContextProps {
     addBook: (book: Book) => void;
     updateBook: (updatedBook: Book) => void;
     removeBook: (id: string) => void;
+    validateEmailUnique: (email: string | undefined, authors: Author[]) => true | string;
 }

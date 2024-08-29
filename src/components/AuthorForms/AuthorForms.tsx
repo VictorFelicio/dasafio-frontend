@@ -7,14 +7,19 @@ import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 import './AuthorForms.scss';
 
 export function AuthorForms() {
-    const { handleSubmit, register, reset } = useForm<Author>({
+    const {
+        handleSubmit,
+        register,
+        reset,
+        formState: { errors },
+    } = useForm<Author>({
         defaultValues: {
             email: '',
             name: '',
         },
     });
 
-    const { addAuthor, updateAuthor } = useContext(LibraryContext);
+    const { addAuthor, updateAuthor, validateEmailUnique, authors } = useContext(LibraryContext);
 
     const { updateEvent, selectedAuthor, handleCloseModal } = useContext(ModalContext);
 
@@ -48,7 +53,10 @@ export function AuthorForms() {
                 <input
                     type="text"
                     id="name"
-                    {...register('name')}
+                    {...register('name', {
+                        required: 'O nome do autor é obrigatório',
+                        minLength: { value: 4, message: 'O nome deve possuir 4 letras ou mais' },
+                    })}
                 />
             </div>
             <div>
@@ -56,7 +64,15 @@ export function AuthorForms() {
                 <input
                     type="email"
                     id="email"
-                    {...register('email')}
+                    {...register('email', {
+                        pattern: {
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                            message: 'E-mail inválido',
+                        },
+                        validate: !updateEvent.isUpdateEvent
+                            ? (email) => validateEmailUnique(email, authors)
+                            : undefined,
+                    })}
                 />
             </div>
             <div className="author-forms-options-buttons">
@@ -72,6 +88,8 @@ export function AuthorForms() {
                     CANCELAR
                 </button>
             </div>
+            {errors.name && <p>{errors.name.message}</p>}
+            {errors.email && <p>{errors.email.message}</p>}
         </form>
     );
 }

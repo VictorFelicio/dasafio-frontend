@@ -64,6 +64,13 @@ function LibraryProvider({ children }: { children: React.ReactNode }) {
         setBooks((prevBooks) => prevBooks.filter((book) => book.id != id));
     }
 
+    function validateEmailUnique(email: string | undefined, authors: Author[]): true | string {
+        if (authors.some((author) => author.email === email)) {
+            return 'E-mail já está cadastrado';
+        }
+        return true;
+    }
+
     return (
         <LibraryContext.Provider
             value={{
@@ -75,6 +82,7 @@ function LibraryProvider({ children }: { children: React.ReactNode }) {
                 addBook,
                 updateBook,
                 removeBook,
+                validateEmailUnique,
             }}
         >
             {children}
