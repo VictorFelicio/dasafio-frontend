@@ -37,7 +37,7 @@ export function BookForms() {
             onSubmit={handleSubmit(onSubmitBook)}
         >
             <div>
-                <label htmlFor="name">Titulo</label>
+                <label htmlFor="name">TÍTULO</label>
                 <input
                     type="text"
                     {...register('name')}
@@ -45,7 +45,7 @@ export function BookForms() {
                 />
             </div>
             <div>
-                <label htmlFor="">Autor</label>
+                <label htmlFor="">AUTOR</label>
                 <select
                     {...register('author_id')}
                     id="author"
@@ -63,15 +63,21 @@ export function BookForms() {
                 </select>
             </div>
             <div>
-                <label htmlFor="pages">Páginas</label>
+                <label htmlFor="pages">PÁGINAS</label>
                 <input
                     type="number"
                     id="pages"
                     {...register('pages')}
                 />
             </div>
-            <div>
-                <button>{updateEvent.isUpdateEvent ? 'Atualizar' : 'Criar'}</button>
+            <div className="book-forms-options-buttons">
+                <button>{updateEvent.isUpdateEvent ? 'ATUALIZAR' : 'ADICIONAR'}</button>
+                <button
+                    className="book-form-abort-btn"
+                    onClick={handleCloseModal}
+                >
+                    CANCELAR
+                </button>
             </div>
         </form>
     );
