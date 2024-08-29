@@ -68,3 +68,43 @@ Os diferenciais são realmente diferenciais, então não se preocupe caso não e
  - Valorizamos um código bem feito e **padronizado**, dê o seu melhor e, caso faça sentido para você, utilize ferramentas de análise de sintaxe 
  como **ESLint** para encontrar potenciais erros e **Prettier** para formatação
 
+## Como testar o projeto
+
+Para testar este projeto, siga os passos abaixo:
+
+1. **Clone o repositório:**
+
+   - Abra o terminal ou prompt de comando.
+   - Execute o comando abaixo para clonar o repositório:
+     ```bash
+     git clone https://github.com/usuario/nome-do-repositorio.git
+     ```
+
+2. **Navegue até o diretório do projeto:**
+
+   - Após clonar o repositório, entre no diretório do projeto com:
+     ```bash
+     cd nome-do-repositorio
+     ```
+
+3. **Instale as dependências:**
+
+   - Para instalar todas as dependências necessárias, execute o comando:
+     ```bash
+     npm install
+     ```
+
+4. **Inicie o servidor de desenvolvimento:**
+
+   - Agora, para iniciar o servidor, execute o comando:
+     ```bash
+     npm run dev
+     ```
+
+5. **Acesse o projeto no navegador:**
+
+   - Abra seu navegador e acesse a aplicação em `http://localhost:3000`.
+
+Pronto! Agora você pode explorar e testar o projeto.
+
+
