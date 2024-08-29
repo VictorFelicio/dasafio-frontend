@@ -3,6 +3,7 @@ import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 import { Author } from '../../model/Author';
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal';
+import { EyeOpenIcon, TrashIcon } from '@radix-ui/react-icons';
 
 export function TableAuthor() {
     const { authors, removeAuthor } = useContext(LibraryContext);
@@ -31,42 +32,45 @@ export function TableAuthor() {
 
     return (
         <>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {authors.map((author) => {
-                    return (
-                        <tr key={author.id}>
-                            <td>{author.id}</td>
-                            <td>{author.name}</td>
-                            <td>{author.email}</td>
-                            <td>
-                                <button
-                                    name="update"
-                                    onClick={() => handleUpdateAuthor(author)}
-                                >
-                                    editar
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    onClick={() => {
-                                        setSelectedAuthorId(author.id);
-                                        setIsOpenConfirmModal(true);
-                                    }}
-                                >
-                                    excluir
-                                </button>
-                            </td>
-                        </tr>
-                    );
-                })}
-            </tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>EMAIL</th>
+                        <th colSpan={2}>OPÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {authors.map((author) => {
+                        return (
+                            <tr key={author.id}>
+                                <td>{author.id}</td>
+                                <td>{author.name}</td>
+                                <td>{author.email}</td>
+                                <td>
+                                    <button
+                                        name="update"
+                                        onClick={() => handleUpdateAuthor(author)}
+                                    >
+                                        <EyeOpenIcon />
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() => {
+                                            setSelectedAuthorId(author.id);
+                                            setIsOpenConfirmModal(true);
+                                        }}
+                                    >
+                                        <TrashIcon />
+                                    </button>
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
             <ConfirmModal
                 isOpen={isOpenConfirmModal}
                 onConfirm={handleConfirmDelete}

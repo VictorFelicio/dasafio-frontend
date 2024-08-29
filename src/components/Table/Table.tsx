@@ -22,7 +22,7 @@ export function Table() {
                             <button onClick={() => setTableType('book')}>Ver livros</button>
                         </div>
                         <main className="table-main">
-                            <table>{tableType == 'author' ? <TableAuthor /> : <TableBook />}</table>
+                            {tableType == 'author' ? <TableAuthor /> : <TableBook />}
                         </main>
                     </>
                 )}
