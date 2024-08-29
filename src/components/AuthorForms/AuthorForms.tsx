@@ -44,7 +44,7 @@ export function AuthorForms() {
             onSubmit={handleSubmit(onSubmitAuthor)}
         >
             <div>
-                <label htmlFor="name">Nome</label>
+                <label htmlFor="name">NOME</label>
                 <input
                     type="text"
                     id="name"
@@ -52,15 +52,25 @@ export function AuthorForms() {
                 />
             </div>
             <div>
-                <label htmlFor="email">E-mail</label>
+                <label htmlFor="email">E-MAIL</label>
                 <input
                     type="email"
                     id="email"
                     {...register('email')}
                 />
             </div>
-            <div>
-                {<button type="submit">{updateEvent.isUpdateEvent ? 'Atualizar' : 'Criar'}</button>}
+            <div className="author-forms-options-buttons">
+                {
+                    <button type="submit">
+                        {updateEvent.isUpdateEvent ? 'ATUALIZAR' : 'ADICIONAR'}
+                    </button>
+                }
+                <button
+                    onClick={handleCloseModal}
+                    className="author-form-abort-btn"
+                >
+                    CANCELAR
+                </button>
             </div>
         </form>
     );

@@ -1,0 +1,60 @@
+.author-forms {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-size: 1.3rem;
+            color: #000000;
+        }
+
+        input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.3rem;
+            font-size: 1.3rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: #1e6f9f;
+            }
+        }
+    }
+
+    button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        flex: 1;
+        border-radius: 0.3rem;
+        background-color: #4ea8de;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #3b8bbf;
+        }
+    }
+
+    & > .author-forms-options-buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        & > .author-form-abort-btn {
+            background-color: #8284fa;
+
+            &:hover {
+                background-color: #5e60ce;
+            }
+        }
+    }
+}
