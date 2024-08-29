@@ -84,7 +84,7 @@ Para testar este projeto, siga os passos abaixo:
 
    - Após clonar o repositório, entre no diretório do projeto com:
      ```bash
-     cd nome-do-repositorio
+     cd dasafio-frontend
      ```
 
 3. **Instale as dependências:**
