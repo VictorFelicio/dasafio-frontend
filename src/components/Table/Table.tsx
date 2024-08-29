@@ -3,6 +3,7 @@ import { TableBook } from '../TableBook/TableBook';
 import { TableAuthor } from '../TableAuthor/TableAuthor';
 import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 import './Table.scss';
+import { EmptyContent } from '../EmptyContent/EmptyContent';
 
 type TableType = 'author' | 'book';
 
@@ -14,7 +15,7 @@ export function Table() {
         <section className="table">
             <div>
                 {isEmpty ? (
-                    <div className="table-empty">sem conteudo</div>
+                    <EmptyContent message="Você ainda não adicionou um autor ou livro!" />
                 ) : (
                     <>
                         <div className="table-controls">

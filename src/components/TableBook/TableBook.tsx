@@ -35,6 +35,7 @@ export function TableBook() {
                                 <td>{book.pages}</td>
                                 <td>
                                     <button
+                                        id="update"
                                         onClick={() => {
                                             handleUpdateBook(book);
                                         }}
@@ -44,6 +45,7 @@ export function TableBook() {
                                 </td>
                                 <td>
                                     <button
+                                        id="exclude"
                                         onClick={() => {
                                             removeBook(book.id);
                                         }}

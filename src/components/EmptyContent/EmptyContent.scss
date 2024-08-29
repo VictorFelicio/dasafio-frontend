@@ -1,0 +1,22 @@
+.empty-content {
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: #f2f2f2;
+    font-size: 2rem;
+
+    .empty-content-icon {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 1rem;
+        color: #f2f2f2;
+    }
+
+    p {
+        margin: 0;
+    }
+}

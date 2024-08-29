@@ -5,6 +5,7 @@ import { Author } from '../../model/Author';
 import { genereteID } from '../../utils/generateID';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 import './AuthorForms.scss';
+import { Error } from '../Error/Error';
 
 export function AuthorForms() {
     const {
@@ -69,9 +70,7 @@ export function AuthorForms() {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                             message: 'E-mail inválido',
                         },
-                        validate: !updateEvent.isUpdateEvent
-                            ? (email) => validateEmailUnique(email, authors)
-                            : undefined,
+                        validate: (email) => validateEmailUnique(email, authors),
                     })}
                 />
             </div>
@@ -88,8 +87,8 @@ export function AuthorForms() {
                     CANCELAR
                 </button>
             </div>
-            {errors.name && <p>{errors.name.message}</p>}
-            {errors.email && <p>{errors.email.message}</p>}
+            {errors.name && <Error message={errors.name.message} />}
+            {errors.email && <Error message={errors.email.message} />}
         </form>
     );
 }

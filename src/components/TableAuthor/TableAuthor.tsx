@@ -50,6 +50,7 @@ export function TableAuthor() {
                                 <td>{author.email}</td>
                                 <td>
                                     <button
+                                        id="update"
                                         name="update"
                                         onClick={() => handleUpdateAuthor(author)}
                                     >
@@ -58,6 +59,7 @@ export function TableAuthor() {
                                 </td>
                                 <td>
                                     <button
+                                        id="exclude"
                                         onClick={() => {
                                             setSelectedAuthorId(author.id);
                                             setIsOpenConfirmModal(true);

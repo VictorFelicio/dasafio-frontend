@@ -71,16 +71,27 @@ table {
         }
 
         button {
-            background-color: #4ea8de;
             color: white;
             border: none;
             padding: 5px 10px;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+        }
+
+        #update {
+            background-color: #8284fa;
 
             &:hover {
-                background-color: #357abd;
+                background-color: #5e60ce;
+            }
+        }
+
+        #exclude {
+            background-color: #cf2648;
+
+            &:hover {
+                background-color: #eb6983;
             }
         }
     }

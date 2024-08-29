@@ -1,0 +1,17 @@
+#error {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    background: rgb(222, 118, 118);
+    background: linear-gradient(
+        90deg,
+        rgb(224, 100, 100) 1%,
+        rgba(235, 35, 32, 0.768032212885154) 93%
+    );
+    padding: 1.2rem 1rem;
+    border-radius: 0.8rem;
+    font-size: 1.3rem;
+    color: rgb(30, 17, 10);
+    font-weight: 700;
+}

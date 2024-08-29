@@ -5,8 +5,20 @@ import { genereteID } from '../../utils/generateID';
 import { Book } from '../../model/Book';
 import './BookForms.scss';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
+import { Error } from '../Error/Error';
 export function BookForms() {
-    const { handleSubmit, register, reset } = useForm<Book>({});
+    const {
+        handleSubmit,
+        register,
+        reset,
+        formState: { errors },
+    } = useForm<Book>({
+        defaultValues: {
+            name: '',
+            pages: '',
+            author_id: '',
+        },
+    });
     const { authors, addBook, updateBook } = useContext(LibraryContext);
     const { handleCloseModal, updateEvent, selectedBook } = useContext(ModalContext);
 
@@ -40,14 +52,20 @@ export function BookForms() {
                 <label htmlFor="name">TÍTULO</label>
                 <input
                     type="text"
-                    {...register('name')}
+                    {...register('name', {
+                        required: 'O título do livro é obrigatório!',
+                        minLength: {
+                            value: 4,
+                            message: 'O título deve conter 4 caracteres ou mais!',
+                        },
+                    })}
                     id="name"
                 />
             </div>
             <div>
                 <label htmlFor="">AUTOR</label>
                 <select
-                    {...register('author_id')}
+                    {...register('author_id', { required: 'O autor do livro é obrigatório!' })}
                     id="author"
                 >
                     {authors.map((author) => {
@@ -79,6 +97,8 @@ export function BookForms() {
                     CANCELAR
                 </button>
             </div>
+            {errors.name && <Error message={errors.name.message} />}
+            {errors.author_id && <Error message={errors.author_id.message} />}
         </form>
     );
 }
