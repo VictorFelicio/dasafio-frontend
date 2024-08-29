@@ -3,6 +3,7 @@ import { AuthorForms } from '../AuthorForms/AuthorForms';
 import { BookForms } from '../BookForms/BookForms';
 import './ModalWithTabs.scss';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
+import { Cross1Icon } from '@radix-ui/react-icons';
 
 export function ModalWithTabs() {
     const [modalType, setModalType] = useState<'author' | 'book' | undefined>('author');
@@ -21,12 +22,6 @@ export function ModalWithTabs() {
     return (
         <div className="modal-overlay">
             <main className="modal-content">
-                <button
-                    className="modal-close-button"
-                    onClick={handleCloseModal}
-                >
-                    X
-                </button>
                 <div>
                     <header>
                         <nav className="modal-tabs">
@@ -63,6 +58,12 @@ export function ModalWithTabs() {
                                 </>
                             )}
                         </nav>
+                        <button
+                            className="modal-close-button"
+                            onClick={handleCloseModal}
+                        >
+                            <Cross1Icon />
+                        </button>
                     </header>
                 </div>
                 <div className="modal-tab-content">
