@@ -77,7 +77,7 @@ Para testar este projeto, siga os passos abaixo:
    - Abra o terminal ou prompt de comando.
    - Execute o comando abaixo para clonar o repositório:
      ```bash
-     git clone https://github.com/usuario/nome-do-repositorio.git
+     git clone https://github.com/VictorFelicio/dasafio-frontend.git
      ```
 
 2. **Navegue até o diretório do projeto:**
@@ -103,7 +103,7 @@ Para testar este projeto, siga os passos abaixo:
 
 5. **Acesse o projeto no navegador:**
 
-   - Abra seu navegador e acesse a aplicação em `http://localhost:3000`.
+   - Abra seu navegador e acesse a aplicação em `http://localhost:5173`.
 
 Pronto! Agora você pode explorar e testar o projeto.
 
