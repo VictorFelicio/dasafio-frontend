@@ -2,10 +2,10 @@ import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
 import { Author } from '../../model/Author';
-import { genereteID } from '../../utils/generateID';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 import './AuthorForms.scss';
 import { Error } from '../Error/Error';
+import { useSubmitAuthor } from './functions/useSubmitAuthor';
 
 export function AuthorForms() {
     const {
@@ -20,29 +20,17 @@ export function AuthorForms() {
         },
     });
 
-    const { addAuthor, updateAuthor, validateEmailUnique, authors } = useContext(LibraryContext);
+    const { validateEmailUnique, authors } = useContext(LibraryContext);
 
     const { updateEvent, selectedAuthor, handleCloseModal } = useContext(ModalContext);
+
+    const { onSubmitAuthor } = useSubmitAuthor();
 
     useEffect(() => {
         if (selectedAuthor && updateEvent.isUpdateEvent) {
             reset(selectedAuthor);
         }
     }, [reset, selectedAuthor, updateEvent]);
-
-    const onSubmitAuthor = (data: Author) => {
-        if (updateEvent.isUpdateEvent && selectedAuthor) {
-            updateAuthor(data);
-        } else {
-            const newAuthor: Author = {
-                id: genereteID(),
-                name: data.name,
-                email: data.email ? data.email : 'N/I',
-            };
-            addAuthor(newAuthor);
-        }
-        handleCloseModal();
-    };
 
     return (
         <form

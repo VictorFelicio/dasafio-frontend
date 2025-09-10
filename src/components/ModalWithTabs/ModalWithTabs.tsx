@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthorForms } from '../AuthorForms/AuthorForms';
 import { BookForms } from '../BookForms/BookForms';
-import './ModalWithTabs.scss';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 import { Cross1Icon } from '@radix-ui/react-icons';
+import './ModalWithTabs.scss';
 
 export function ModalWithTabs() {
     const [modalType, setModalType] = useState<'author' | 'book' | undefined>('author');
@@ -31,14 +31,14 @@ export function ModalWithTabs() {
                                         onClick={() => setModalType('author')}
                                         className={`modal-tab-button ${modalType === 'author' ? 'active' : ''}`}
                                     >
-                                        Autor
+                                        AUTOR
                                     </button>
                                 ) : (
                                     <button
                                         onClick={() => setModalType('book')}
                                         className={`modal-tab-button ${modalType === 'book' ? 'active' : ''}`}
                                     >
-                                        Livro
+                                        LIVRO
                                     </button>
                                 )
                             ) : (
@@ -47,13 +47,13 @@ export function ModalWithTabs() {
                                         onClick={() => setModalType('author')}
                                         className={`modal-tab-button ${modalType === 'author' ? 'active' : ''}`}
                                     >
-                                        Autor
+                                        AUTOR
                                     </button>
                                     <button
                                         onClick={() => setModalType('book')}
                                         className={`modal-tab-button ${modalType === 'book' ? 'active' : ''}`}
                                     >
-                                        Livro
+                                        LIVRO
                                     </button>
                                 </>
                             )}

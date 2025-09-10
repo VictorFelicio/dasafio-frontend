@@ -15,12 +15,12 @@ export function Table() {
         <section className="table">
             <div>
                 {isEmpty ? (
-                    <EmptyContent message="Você ainda não adicionou um autor ou livro!" />
+                    <EmptyContent message="VOCÊ AINDA NÃO ADICIONOU UM AUTOR OU LIVRO!" />
                 ) : (
                     <>
                         <div className="table-controls">
-                            <button onClick={() => setTableType('author')}>Ver autores</button>
-                            <button onClick={() => setTableType('book')}>Ver livros</button>
+                            <button onClick={() => setTableType('author')}>VER AUTORES</button>
+                            <button onClick={() => setTableType('book')}>VER LIVROS</button>
                         </div>
                         <main className="table-main">
                             {tableType == 'author' ? <TableAuthor /> : <TableBook />}

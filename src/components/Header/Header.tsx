@@ -18,7 +18,7 @@ export function Header() {
                     </div>
                 </div>
                 <div className="header-button-container">
-                    <button onClick={() => handleOpenModal()}>Adicionar</button>
+                    <button onClick={() => handleOpenModal()}>ADICIONAR</button>
                 </div>
             </nav>
         </header>

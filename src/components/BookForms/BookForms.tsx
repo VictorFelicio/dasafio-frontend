@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { LibraryContext } from '../../contexts/LibraryContext/LibraryContext';
-import { genereteID } from '../../utils/generateID';
 import { Book } from '../../model/Book';
-import './BookForms.scss';
 import { ModalContext } from '../../contexts/ModalContext/ModalContext';
 import { Error } from '../Error/Error';
+import { useSubmitBook } from './functions/useSubmitBook';
+import './BookForms.scss';
+
 export function BookForms() {
     const {
         handleSubmit,
@@ -19,8 +20,10 @@ export function BookForms() {
             author_id: '',
         },
     });
-    const { authors, addBook, updateBook } = useContext(LibraryContext);
+    const { authors } = useContext(LibraryContext);
     const { handleCloseModal, updateEvent, selectedBook } = useContext(ModalContext);
+
+    const { onSubmitBook } = useSubmitBook();
 
     useEffect(() => {
         if (selectedBook && updateEvent.isUpdateEvent) {
@@ -28,21 +31,6 @@ export function BookForms() {
         }
     }, [reset, selectedBook, updateEvent]);
 
-    const onSubmitBook = (data: Book) => {
-        if (updateEvent.isUpdateEvent && selectedBook) {
-            updateBook(data);
-        } else {
-            const newBook: Book = {
-                id: genereteID(),
-                name: data.name,
-                author_id: data.author_id,
-                pages: data.pages ? data.pages : 'N/I',
-            };
-            addBook(newBook);
-            reset();
-        }
-        handleCloseModal();
-    };
     return (
         <form
             className="book-forms"
